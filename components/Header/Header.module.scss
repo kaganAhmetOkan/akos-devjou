@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem var(--desktop-padding);
+  border-bottom: 1px solid var(--secondary);
+  background-color: var(--bg);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .main {
+    box-shadow: 0 0 10px var(--secondary);
+  }
+}
