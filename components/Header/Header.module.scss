@@ -8,6 +8,21 @@
   z-index: 999;
   position: sticky;
   top: 0;
+  transition: transform 250ms, margin-bottom 250ms;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.main[data-visible=false] {
+  transform: translateY(-90%);
+  margin-bottom: -64px;
+}
+
+.main[data-visible=false]:hover {
+  transform: translateY(-10%);
 }
 
 @media (prefers-color-scheme: light) {
