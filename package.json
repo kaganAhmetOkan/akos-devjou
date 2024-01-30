@@ -1,6 +1,10 @@
 {
   "name": "akos-devjou",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "description": "Source code of my personal blog website, Ako's Developer Journal.",
+  "repository": "https://github.com/kaganAhmetOkan/akos-devjou",
+  "author": "Kağan Ahmet Okan <okaganahmet@gmail.com>",
+  "license": "GPL-3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
