@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  background-color: var(--secondary);
+  gap: 0.5rem;
+  border-radius: 10rem;
+  transition: background-color 250ms, gap 250ms;
+}
+
+.input {
+  background-color: transparent;
+  border-radius: 10rem;
+  max-width: 15rem;
+  transition: max-width 250ms, padding 250ms;
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.main[data-visible=false] {
+  gap: 0;
+  background-color: transparent;
+  
+  .input {
+    max-width: 0;
+    padding: 0;
+  }
+}
+
+.main[data-visible=true] {
+  .button:hover,
+  .button:focus-visible {
+    transform: translateY(0);
+  }
+}

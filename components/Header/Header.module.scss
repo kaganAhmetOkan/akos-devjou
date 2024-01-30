@@ -1,5 +1,6 @@
 .main {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem var(--desktop-padding);
   border-bottom: 1px solid var(--secondary);
