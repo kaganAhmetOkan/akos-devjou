@@ -1,19 +1,20 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { setLocal, getLocal } from "@/lib/localStorage";
 
 export function usePersistingState<P = undefined>(key: string, initialState?: P): [P, Dispatch<SetStateAction<P>>];
 
 export function usePersistingState<P = undefined>(
   key: string, initialState?: P | undefined
 ): [P | undefined, Dispatch<SetStateAction<P | undefined>>] {
-  // BUG: calling localStorage causes internal server error 500
-  function initializeState() {
-    const oldState = localStorage.getItem(key);
-    if (oldState !== null) return JSON.parse(oldState);
-    return initialState;
-  };
-
   // new persisted state
-  const [value, setValue] = useState<P | undefined>(initializeState);
+  const [value, setValue] = useState<P | undefined>(initialState);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const oldState = getLocal(key);
+      if (oldState !== null) setValue(oldState);
+    };
+  }, [key]);
 
   // update persisted state
   useEffect(() => {
@@ -31,10 +32,13 @@ export function usePersistingState<P = undefined>(
     return () => window.removeEventListener("storage", updateState);
   }, [key]);
 
-  // update local storage
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+  // reducer function for updating value and local storage together
+  function setState(
+    state: SetStateAction<P | undefined>
+  ) {
+    setValue(state);
+    setLocal(key, state);
+  };
 
-  return [value, setValue];
+  return [value, setState];
 };
