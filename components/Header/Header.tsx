@@ -3,6 +3,7 @@ import style from "./Header.module.scss";
 import Link from "next/link";
 import ToggleHeader from "../ToggleHeader/ToggleHeader";
 import SearchBar from "../SearchBar/SearchBar";
+import Button from "../Button/Button";
 import { usePersistingState } from "@/hooks/usePersistingState";
 
 export default function Header() {
@@ -17,6 +18,9 @@ export default function Header() {
       <div className={style.buttons}>
         <ToggleHeader visible={headerVisible} setVisible={setHeaderVisible} />
         <SearchBar />
+        <Button theme="primary">
+          Sign in
+        </Button>
       </div>
     </header>
   );
