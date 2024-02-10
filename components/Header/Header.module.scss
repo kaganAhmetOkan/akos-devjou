@@ -11,10 +11,15 @@
   transition: transform 250ms, margin-bottom 250ms;
 }
 
-.buttons {
+.buttons,
+.mobileButtons {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.mobileButtons {
+  display: none;
 }
 
 .main[data-visible=false] {
@@ -29,5 +34,21 @@
 @media (prefers-color-scheme: light) {
   .main {
     box-shadow: 0 0 10px var(--secondary);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    padding: 1rem var(--mobile-padding);
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .buttons {
+    display: none;
+  }
+  
+  .mobileButtons {
+    display: flex;
   }
 }

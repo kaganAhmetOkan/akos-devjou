@@ -4,6 +4,7 @@ import Link from "next/link";
 import ToggleHeader from "../ToggleHeader/ToggleHeader";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../Button/Button";
+import Hamburger from "../Hamburger/Hamburger";
 import { usePersistingState } from "@/hooks/usePersistingState";
 
 export default function Header() {
@@ -21,6 +22,9 @@ export default function Header() {
         <Button theme="primary">
           Sign in
         </Button>
+      </div>
+      <div className={style.mobileButtons}>
+        <Hamburger />
       </div>
     </header>
   );
